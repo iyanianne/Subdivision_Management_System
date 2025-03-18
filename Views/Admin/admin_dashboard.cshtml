@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+
+    body {
+        background-color: #F4F4F4;
+    }
+        
+    @* SIDE BAR *@
+    .sidebar {
+        width: 60px; 
+        background-color: #f8f9fa;
+        height: 100vh;
+        transition: width 0.3s ease-in-out;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+        white-space: nowrap;
+    }
+
+    .sidebar.expanded {
+        width: 250px; 
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.3s;
+        overflow: hidden;
+    }
+
+    .sidebar li:hover {
+        background-color: #e9ecef;
+    }
+
+    .sidebar i {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    @* TO HIDE LABEL - DEFAULT  *@
+    .sidebar-label {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    @* SHOW LABEL IF SIDE BAR IS EXPANDED *@
+    .sidebar.expanded .sidebar-label {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dashboard-content {
+        margin-left: 60px; 
+        padding: 20px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    .sidebar.expanded ~ .dashboard-content {
+        margin-left: 250px; 
+    }
+
+
+    /* CARD STYLES */
+        .card {
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        /* PROFILE SECTION */
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        /* MODAL BUTTON */
+        .btn-add-employee {
+            background-color: #5F3B71;
+            color: white;
+            border: none;
+        }
+
+        .btn-add-employee:hover {
+            background-color: #4a2b5c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <ul>
+            <li onclick="toggleSidebar()">
+                <i class="fas fa-th-large"></i> 
+                <span class="sidebar-label">Dashboard</span>
+            </li>
+            <li>
+                <i class="fas fa-user"></i>
+                <span class="sidebar-label">Profile</span>
+            </li>
+            <li>
+                <i class="fas fa-bullhorn"></i>
+                <span class="sidebar-label">Announcement</span>
+            </li>
+            <li>
+                <i class="fas fa-dollar-sign"></i>
+                <span class="sidebar-label">Payment & Billing</span>
+            </li>
+            <li>
+                <i class="fas fa-users"></i>
+                <span class="sidebar-label">Services</span>
+            </li>
+            <li>
+                <i class="fas fa-home"></i>
+                <span class="sidebar-label">Security & Visitors</span>
+            </li>
+            <li>
+                <i class="fas fa-user-circle"></i>
+                <span class="sidebar-label">Contact & Support</span>
+            </li>
+            <hr>
+            <li>
+                <i class="fas fa-cog"></i>
+                <span class="sidebar-label">Settings</span>
+            </li>
+            <li>
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="sidebar-label">Logout</span>
+            </li>
+        </ul>
+    </aside>
+    
+    @* DASHBOARD CONTENT *@
+    <div class="dashboard-content">
+        <div class="d-flex justify-content-between">
+            <h4>Dashboard</h4>
+            <div class="profile">
+                <span>Pooran Mal Yadav <br> Senior Admin</span>
+                <img src="profile.jpg" alt="Profile">
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h6><i class="fas fa-building"></i> Total Houses</h6>
+                    <h2>102</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h6><i class="fas fa-users"></i> Total Residence</h6>
+                    <h2>345</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h6><i class="fas fa-wallet"></i> Total Income</h6>
+                    <h2>₱1,123,589.00</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h6><i class="fas fa-user-tie"></i> Total Employees</h6>
+                    <h2>58</h2>
+                </div>
+            </div>
+        </div>
+        @* ADD EMPLOYEE BUTTON *@
+        <button class="btn btn-add-employee" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+            <i class="fas fa-user-plus"></i> Add Employee
+        </button>
+    </div>
+
+    <!-- STAFF REGISTRATION MODAL -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEmployeeModalLabel"><i class="fas fa-user-plus"></i> Register Staff</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="employeeForm">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="employeeName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Position</label>
+                            <input type="text" class="form-control" id="employeePosition" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="employeeEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" id="employeeContact" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Temporary Password</label>
+                            <input type="password" class="form-control" id="employeePassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="employeeConfirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        @* FOR ADDING NEW EMPLOYEE *@
+         $(document).ready(function(){
+            $('#employeeForm').submit(function(e){
+                e.preventDefault();
+                let name = $('#employeeName').val();
+                let position = $('#employeePosition').val();
+                alert('Employee Added: ' + name + ' - ' + position);
+                $('#addEmployeeModal').modal('hide');
+                $('#employeeForm')[0].reset();
+            });
+        });
+
+        @* FOR THE SIDEBAR *@
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("expanded");
+
+            var dashboardContent = document.querySelector(".dashboard-content");
+            if (sidebar.classList.contains("expanded")) {
+                dashboardContent.style.marginLeft = "250px"; 
+            } else {
+                dashboardContent.style.marginLeft = "60px"; 
+            }
+        }
+
+        @* CLOSE SIDEBAR *@
+        document.addEventListener("click", function(event) {
+            var sidebar = document.getElementById("sidebar");
+            var isClickInsideSidebar = sidebar.contains(event.target);
+            var isHamburgerClick = event.target.closest("li"); 
+
+            if (!isClickInsideSidebar && sidebar.classList.contains("expanded") && !isHamburgerClick) {
+                toggleSidebar();
+            }
+        });
+        
+
+        $(document).ready(function(){
+            $('#employeeForm').submit(function(e){
+                e.preventDefault();
+
+                let name = $('#employeeName').val();
+                let position = $('#employeePosition').val();
+                let email = $('#employeeEmail').val();
+                let contact = $('#employeeContact').val();
+                let password = $('#employeePassword').val();
+                let confirmPassword = $('#employeeConfirmPassword').val();
+
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match!");
+                    return;
+                }
+
+                
+                console.log("Registering Staff: ", { name, position, email, contact });
+
+                
+                $.post('/register_staff', { name, position, email, contact, password }, function(response) {
+                    alert(response.message);
+                });
+
+                $('#addEmployeeModal').modal('hide');
+                $('#employeeForm')[0].reset();
+            });
+        });
+    </script>
+</body>
+</html>
