@@ -357,6 +357,29 @@ body {
 
 /* MAIN */
 /* Profile Page Styling */
+#content main {
+    width: 100%;
+    padding: 36px 24px;
+    font-family: var(--poppins);
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+#content main .head-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 16px;
+    flex-wrap: wrap;
+}
+
+#content main .head-title .left h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
 .profile-container {
     background: var(--light);
     padding: 30px;
@@ -396,10 +419,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .profile-container button:hover {
+    background: var(--dark);
+}
+
+.profile-container .edit-btn:hover {
     background: var(--dark);
 }
 
@@ -425,25 +452,53 @@ body {
     border-radius: 7px;
 }
 
+.profile-container .profile-image h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
 .profile-container p {
+    font-size: 16px;
+    font-weight: 800;
     text-align: left;
     color: var(--dark);
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.profile-container .prof-head {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .profile-container .column input {
     padding: 10px;
-    margin: 10px 0;
     border-radius: 5px;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
     width: 100%;
+}
+
+.profile-container .edit-btn {
+    background: #3C91E6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin: 10px;
 }
 
 .profile-container img {
     height: 80px;
     width: 80px;
-    clip-path: circle(50px);
+    border-radius: 50%; 
+    object-fit: cover; 
 }
 /* MAIN */
 /* CONTENT */

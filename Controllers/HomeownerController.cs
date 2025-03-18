@@ -36,12 +36,12 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Profile()
+    public IActionResult profile()
     {
         return View();
     }
 
-    public IActionResult Edit_Profile()
+    public IActionResult edit_profile()
     {
         return View();
     }

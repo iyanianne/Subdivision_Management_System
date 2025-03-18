@@ -83,7 +83,6 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu'></i>
-			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -110,7 +109,6 @@
 				</div>
                 <div class="profile-container">
                 <form asp-action="Edit_Profile" asp-controller="Home" method="post">
-                    <div class="profile-container">
                 <div class="profile-card">
                     <div class="profile-image">
                         <img src="~/images/man.png" alt="Profile Picture">
@@ -124,7 +122,7 @@
                             <p> Full Name </p>
                                  <input type="text" value="Cedric Espiritu Cornelio">
                             <p>Email Address</p>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" value="cedcedcornelio@gmail.com" id="email" name="email" required>
                             <p>Phone Number </p>
                                 <input type="text" value="+63 01234567890">
                             <p>Block Number </p>
@@ -140,11 +138,10 @@
                                 <input type="text" value="+63 12345678901">
                             <p>Vehicle Information </p>
                                 <input type="text" value="ABC 1234, Toyota Fortuner, Black">
-
-                            <button class="edit-btn" onclick="window.location.href='/Home/Profile'">Save Changes</button>
-                        </div>
-                    </div>
-                </div>
+							<br>
+							<br>
+								<a class="edit-btn" asp-area="" asp-controller="Home" asp-action="profile">Save Changes</a>                        </div>
+					</div>
                 </form>
             </div>
 			</div>

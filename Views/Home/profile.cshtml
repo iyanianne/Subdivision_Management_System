@@ -83,7 +83,6 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu'></i>
-			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -97,7 +96,7 @@
 				<span class="num">8</span>
 			</a>
 			<a asp-area="" asp-controller="Home" asp-action="Profile">
-				<img src="~/images/profile.jpg" style="border-radius: 50%; width: 36px; height: 36px; object-fit: cover;">
+				<img src="~/images/man.png" style="border-radius: 50%; width: 36px; height: 36px; object-fit: cover;">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -110,15 +109,15 @@
 				</div>
                 <div class="profile-container">
                 <form asp-action="Profile" asp-controller="Home" method="post">
-                    <div class="profile-container">
                 <div class="profile-card">
-                    <div class="profile-image">
-                        <img src="~/images/man.png" alt="Profile Picture">
-                        <h2>Cornelio, Cedric Espiritu</h2>
-                    </div>
-                    <div>
-                        <button class="edit-btn" onclick="window.location.href='/Home/Edit_Profile'">Edit Profile</button> <button type="submit">Change Password</button>
-                    </div>
+					<div class="prof-head">
+						<div class="profile-image">
+							<img src="~/images/man.png" alt="Profile Picture">
+							<h2>Cornelio, Cedric Espiritu</h2>
+							<a class="edit-btn" asp-area="" asp-controller="Home" asp-action="edit_profile">Edit Profile</a>
+							<button type="submit">Change Password</button>
+						</div>
+					</div>
                     <div class="row">
                         <div class="column">
                             <p> Full Name </p>
@@ -142,7 +141,6 @@
                                 <input type="text" value="ABC 1234, Toyota Fortuner, Black" readonly>
                         </div>
                     </div>
-                </div>
                 </form>
             </div>
 			</div>
